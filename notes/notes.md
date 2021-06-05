@@ -29,4 +29,5 @@ $ cmake -S ../ -B .
 $ make
 ```
 > **What I Did**
-![Terminal Screenshot]()
+>
+![Terminal](https://github.com/Mugunthan-N/Training/blob/master/notes/cmake/CMake_Screenshot.png)
