@@ -1,5 +1,6 @@
 # CMake
-#### What I learnt
+
+> **What I learnt**
 * **CMake** is used to create **MakeFile**
 * Makefile is file which contains bash commands to build/compile project
 * **CMakelists.txt** file should be in root 
@@ -8,22 +9,22 @@
 * CMake automatically fills Makefile with required lines for make command
 
 > **Process**
-1. Create a CMakelists.txt and fill in
+* Create a CMakelists.txt and fill in
 ```cmake
-		cmake_minimum_required(VERSION 3.16.3)
-		project(name_of_project)
-		add_executable($(PROJECT_NAME) main.c) 
+cmake_minimum_required(VERSION 3.16.3)
+project(name_of_project)
+add_executable($(PROJECT_NAME) main.c) 
 ```
-1. Create a build dir
+* Create a build dir
 ```bash
-		$ mkdir build 
+$ mkdir build 
 ```
-1. In build dir 
+* In build dir 
 ```bash
-		$ cmake -S ../ -B . 
+$ cmake -S ../ -B . 
 ```
-1. MakeFile would be created 
-1. make in the dir to get the output
+* MakeFile would be created 
+* make in the dir to get the output
 ```bash
-		$ make
+$ make
 ```
