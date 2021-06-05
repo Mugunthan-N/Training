@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/CMake_eg.dir/main.c.o  -o CMake_eg 
