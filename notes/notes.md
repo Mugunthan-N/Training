@@ -64,3 +64,35 @@ $ make
  * Primary controller manages the allotment of node IDs and gathers information about which nodes can
  reach each other
  * Secondary controllers can obtain the network routing information gathered by the primary controller
+
+ > Slave Nodes
+ * They do not contain any routing tables, butmay contain a network map
+ * **Slave Nodes** has the ability to receive frames and respond to them if necessary
+ * **Routing Slave** have the ability to host a number of routes for talking to other slaves and controllers
+ * **Frequently Listening Routing Slave (FLiRS)** is configured to listen to a wake up beam during every
+ wake up interval
+
+ > Home ID
+ * To seperate from one to another Z-Wave network
+ * It refers to the ID that is assigned by **Primary Controller** during inclusion process
+ * 32 bit code 
+ * Additional controllers will be assigned the same Home ID
+ * Initially all nodes will have home ID set to 0
+
+  > Node ID
+  * Node is a ZWave module itself
+  * It is a ID or address that each device is assigned
+  * Primary controller assigns the ID to each node
+  * There are a total of 232 nodes available on each network
+  * *eg* 
+  
+  ```
+  Home ID  0x00001111
+  Node ID1 0x01 (Primary Controller)
+  Node ID2 0x02 (Slave)
+  Node ID3 0x03 (Slave)
+  etc...
+  ``` 
+ > Routing
+ * All controllers have a routing table that enables the controller to calculate the routes in the Z-Wave network.
+ * It keeps track of these routes and knows which ‘path’ to take to communicate with the destination node. 
