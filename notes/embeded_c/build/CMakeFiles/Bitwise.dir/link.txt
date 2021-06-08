@@ -1,0 +1,1 @@
+/usr/bin/cc    CMakeFiles/Bitwise.dir/scripts/bitwise.c.o  -o Bitwise 
