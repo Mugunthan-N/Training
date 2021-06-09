@@ -96,3 +96,17 @@ $ make
  > Routing
  * All controllers have a routing table that enables the controller to calculate the routes in the Z-Wave network.
  * It keeps track of these routes and knows which ‘path’ to take to communicate with the destination node. 
+
+ ## Interrupts
+
+ > **What I learnt**
+ * As the name indigates they are the interrupts for background code that is running already
+ * When an interrupt occurs (external or internal) which is not, in any case predictable, will pause the backround code from excecuting and passes the control to some other address
+ * This address is nothing but an ISR(Interrupt Service Routine), a subroutine which contains instruction to excecute when repective interrupt occurs
+ * ISR can be already defined or explicitly defined based on the application
+ * When an Interrupt occurs the excecution of background code halts and all the CPU states and return address are saved
+ * The excecution of ISR takes place and after its finished, all the saved states are preserved in the CPU and background code continues excecution
+ * When there is an interrupt occurs when already an ISR is in excecution then, the interrupt with higher priority excecutes.
+ * Other interrupts which are active will be in queue when an ISR is running
+ * And after the completion of ISR the interrupts in the queue are excecuted based on their priority
+ * There may be some background code excecution between those ISR excecution, and this wasted time is resolved in latest microcontrollers
