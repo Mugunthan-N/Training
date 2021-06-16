@@ -16,17 +16,17 @@ project( Name_of_project )
 add_executable(${PROJECT_NAME} main.c) 
 ```
 * Create a build dir
-```bash
-$ mkdir build 
+```sh
+mkdir build 
 ```
 * In build dir 
-```bash
-$ cmake -S ../ -B . 
+```sh
+cmake -S ../ -B . 
 ```
 * MakeFile would be created 
 * make in the dir to get the output
-```bash
-$ make
+```sh
+make
 ```
 > **What I Did**
 >
@@ -110,3 +110,41 @@ $ make
  * Other interrupts which are active will be in queue when an ISR is running
  * And after the completion of ISR the interrupts in the queue are excecuted based on their priority
  * There may be some background code excecution between those ISR excecution, and this wasted time is resolved in latest microcontrollers
+
+ # Embedded Linux
+
+ # Yocto Project
+
+ > **What I learnt**
+ * It is a framework that helps us to build a customised Embedded Linux for our target
+ * It contains a Build system called as **Poky**
+ ```
+ Poky = BitBake + MetaData
+
+ BitBake - *Basically it schedules the tasks for the build*
+
+ MetaData 
+   |___ .config   - *Contains all the config variables used for build*
+   |___ bbclasses - *Contains the logic to execute the building process*
+   |___ Recipe    - *Contains the sources for blocks that are to be included in build*   
+ ```
+ * Based on the configurations set in the config files the BitBake builds the image for the target
+
+ > **Process**
+ * Install Yocto Project
+ ```sh
+git clone git://git.yoctoproject.org/poky
+ ```
+ * Into the **Poky** dir
+ ```sh
+cd poky
+ ```
+ * Initialise the **build environment**
+ ```sh
+source oe-init-build-env
+ ```
+ * To build a **minimal image**
+ ```sh
+bitbake core-image-minimal
+ ```
+ 
