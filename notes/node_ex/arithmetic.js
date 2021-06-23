@@ -1,0 +1,13 @@
+var x=10
+var y=5
+var ans=0
+console.log("x = " + x)
+console.log("y = " + y)
+ans = x+y
+console.log("Addition       = " + ans)
+ans = x-y
+console.log("Subtraction    = " + ans)
+ans = x*y
+console.log("Multiplication = " + ans)
+ans = x/y
+console.log("Division       = " + ans)
