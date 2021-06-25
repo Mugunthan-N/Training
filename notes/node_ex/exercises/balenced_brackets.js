@@ -1,4 +1,9 @@
-const balencedBrackets = (str) => {
+const fs = require('fs');
+
+const balencedBrackets = (err,str) => { 
+
+    if(err) console.log ('Error');
+
     let openBracs  = ['[','{','('];
     let closeBracs = [']','}',')'];
     const stack = [];
@@ -8,36 +13,25 @@ const balencedBrackets = (str) => {
         '(' : ')'
     }
     for (let itr = 0; itr < str.length; itr++){
-        if(!openBracs.includes(str[itr]) || !closeBracs.includes(str[itr])){
-            continue;
-        }
+
         if(openBracs.includes(str[itr])){
             stack.push(str[itr]);
         }
         else if(closeBracs.includes(str[itr])){
             if (!stack.length){
-                return 'not a valid closure';
+                console.log ('not a valid closure');
+                return;
             }
             if(bracs[stack.pop()] !== str[itr]){
-                return 'not a valid closure';
+                console.log ('not a valid closure');
+                return;
             }
         }
+        else 
+            continue;
     }
-    return 'valid closure';
+    console.log ((stack.length == 0)? 'valid closure': 'not a valid closure');
+    return;
 }
 
-
-var str = 'for (let itr = 0; itr < str.length; itr++){'+
-'    if(openBracs.includes(str[itr])){ '+
-'        stack.push(str[itr]);'+
-'    }'+
-'    else if(closeBracs.includes(str[itr])){'+
-'        if (!stack.length){'+
-'            return "not a valid closure";'+
-'        }'+
-'        if(bracs[stack.pop()] !== str[itr]){'+
-'            return "not a valid closure";'+
-'        }'+
-'    }'+
-'}'
-console.log(balencedBrackets(str));
+fs.readFile('test.txt','utf8',balencedBrackets)
