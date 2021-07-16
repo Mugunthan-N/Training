@@ -29,4 +29,7 @@ echo "Gpio work..."
 gpio 122 1 && gpio 121 0
 echo "Serial API..."
 pg -f -r  /real/serialapi_controller_bridge_ZM5304_US.hex /dev/ttyS2
-echo "Done..."
+echo "Removing slave.js..."
+rm /real/slave.js
+echo "Done...  Rebooting..."
+reboot
