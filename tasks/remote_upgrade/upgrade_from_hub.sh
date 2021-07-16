@@ -3,13 +3,6 @@ SRCIP=mugunthan@192.168.43.13
 echo
 echo "Removing old Files... "
 echo
-echo "Removing Certificates... "
-rm -rf /real/certs
-echo "Removing corerfs... "
-rm /real/corerfs.json
-sync
-#echo "zlink.js... "
-#zlink.js
 echo "Removing tree... "
 rm -rf /real/tree
 echo "Removing old rfs.squash... "
