@@ -1,3 +1,4 @@
+#!/bin/sh
 SRC_DIR=/home/tmp
 SRCIP=mugunthan@192.168.43.13
 echo
@@ -22,7 +23,7 @@ scp $SRCIP:$SRC_DIR/serialapi_controller_bridge_ZM5304_US.hex /real/
 echo "Copied new files..."
 echo
 echo "Extracting tree..."
-tar xvf /real/tree.tar.gz
+tar xvf /real/tree.tar.gz -C /real/
 echo "Stoping rentlyhub..."
 systemctl stop rentlyhub
 echo "Gpio work..."
