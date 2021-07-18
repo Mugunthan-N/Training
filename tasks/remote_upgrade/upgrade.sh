@@ -41,12 +41,31 @@ tranfer_files(){
     scp $SRC_DIR/serialapi_controller_bridge_ZM5304_US.hex $DESTIP:$HUB_TEMP
     echo
     scp $HUB_SCRIPT $DESTIP:/root/
-    echo "Copied new files..."
+    echo "Transfered new files..."
     echo
-    ssh $DESTIP source /root/$HUB_SCRIPT
-    echo "Invocked Script..."
-    echo
+}
+get_sum()
+{
+    for i in $SRC_DIR/*; do
+        MD5_SUM=`md5sum $i`
+        SRC_MD5+=${MD5_SUM:0:32}
+    done
+    for i in `ssh $DESTIP ls $HUB_TEMP`; do
+        MD5_SUM=`ssh $DESTIP md5sum $HUB_TEMP/$i`
+        DEST_MD5+=${MD5_SUM:0:32}
+    done
 }
 
 extract_files
 tranfer_files
+get_sum
+if [ $SRC_MD5 == $DEST_MD5 ]; then
+    echo "Transfer Suceeded... Upgrading hub..."
+    ssh $DESTIP source /root/$HUB_SCRIPT
+    echo "Invocked Script..."
+    echo
+else
+    echo "Transfer failed... try again..."
+    remove_hub_temp
+    exit 1
+fi

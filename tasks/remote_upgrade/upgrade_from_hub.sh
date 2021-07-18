@@ -34,7 +34,7 @@ copy_new_files(){
     echo "Copying new files..."
     echo
     cp -v $HUB_TEMP/rfs*.squash /real/rfs
-    ssh $DESTIP rm $OLD_RFS
+    rm $OLD_RFS
     cp -v $HUB_TEMP/earlysetup.sh /real/
     cp -v $HUB_TEMP/tree.tar.gz /real/
     cp -v $HUB_TEMP/serialapi_controller_bridge_ZM5304_US.hex /real/
@@ -65,11 +65,12 @@ do_upgrade(){
     reboot
 }
 
-tranfer_files
+#tranfer_files
 if [ `cd $HUB_TEMP && ls . | wc -l` -eq 4 ]; then
+    echo "Found files... Upgrading..."
     do_upgrade
 else
-    echo "Transfer failed... try again..."
+    echo "No file found... Transfer Files and try again..."
     remove_hub_temp
     exit 1
 fi
