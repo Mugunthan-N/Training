@@ -2,24 +2,6 @@
 SRC_DIR=/home/temp/
 MNT_DIR=/mnt/temp/
 HUB_TEMP=/real/hub_temp/
-SRCIP=mugunthan@192.168.43.13
-
-tranfer_files(){
-    echo
-    echo "Transfering new files from the source..."
-    echo
-    mkdir -vp $HUB_TEMP
-    echo "Transfering new rfs.squash from the source..."
-    scp $SRCIP:$SRC_DIR/rfs*.squash $HUB_TEMP
-    echo "Transfering earlysetup.sh file from the source..."
-    scp $SRCIP:$SRC_DIR/earlysetup.sh $HUB_TEMP
-    echo "Transfering tree tar file from the source..."
-    scp $SRCIP:$SRC_DIR/tree.tar.gz $HUB_TEMP
-    echo "Transfering new Serial API file from the source..."
-    scp $SRCIP:$SRC_DIR/serialapi_controller_bridge_ZM5304_US.hex $HUB_TEMP
-    echo "Transfered new files..."
-    echo
-}
 
 remove_old_files(){
     echo "Removing old Files... "
@@ -65,7 +47,6 @@ do_upgrade(){
     reboot
 }
 
-#tranfer_files
 if [ `cd $HUB_TEMP && ls . | wc -l` -eq 4 ]; then
     echo "Found files... Upgrading..."
     do_upgrade

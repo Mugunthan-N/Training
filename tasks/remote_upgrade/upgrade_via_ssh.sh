@@ -29,6 +29,7 @@ tranfer_files(){
     echo
     echo "Transfering new files to the hub..."
     echo
+    ssh $DESTIP rm -rvf $HUB_TEMP
     ssh $DESTIP mkdir -vp $HUB_TEMP
     echo "Transfering new rfs.squash to the hub..."
     scp $SRC_DIR/rfs*.squash $DESTIP:$HUB_TEMP
@@ -85,7 +86,7 @@ do_upgrade(){
     install
     remove_hub_temp
     echo "Done...  Rebooting..."
-    ssh $DESTIP reboot
+    #ssh $DESTIP reboot
 }
 
 get_sum()
@@ -100,7 +101,7 @@ get_sum()
     done
 }
 
-extract_files
+#extract_files
 tranfer_files
 get_sum
 if [ $SRC_MD5 == $DEST_MD5 ]; then
